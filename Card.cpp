@@ -50,21 +50,42 @@ RankEnum Card::getRank() {
 }
 
 Card::Card(SuitEnum value, RankEnum string) {
-    // setSuit(std::to_string(suit));
-    // setRank(string);
     suit = value;
     rank = string;
-
 }
 
-Card::Card() : Card(HEARTS, ACE)
-{
-
-}
+Card::Card() : Card(HEARTS, ACE) {}
 
 std::ostream& operator<<(std::ostream& out, const Card& card)
 {
-      out << card.rankToString() + " of " +  card.suitToString();
+    out << card.rankToString() + " of " +  card.suitToString() << std::endl;
     return out;
+}
+
+bool operator>(const Card &firstCard, const Card &secondCard) {
+    return firstCard.rank > secondCard.rank;
+}
+
+bool operator<(const Card &firstCard, const Card &secondCard) {
+    return firstCard.rank < secondCard.rank;
+}
+bool operator==(const Card &firstCard, const Card &secondCard) {
+    return firstCard.rank == secondCard.rank;
+}
+
+bool operator==(const Card &firstCard, const int &n ) {
+    return firstCard.rank == n;
+}
+
+int operator+(const Card &firstCard, const int &n) {
+    return firstCard.rank + n;
+}
+
+int operator+(const int &n, const Card &firstCard) {
+    return firstCard.rank + n;
+}
+
+bool operator==(const int &n, const Card &firstCard) {
+    return firstCard.rank == n;
 }
 

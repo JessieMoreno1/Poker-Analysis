@@ -5,8 +5,10 @@
 #ifndef DECKOFCARDS_POKERSCORE_H
 #define DECKOFCARDS_POKERSCORE_H
 
-
+#include <vector>
+#include "CardHand.h"
 class PokerScore {
+public:
     enum Scores{
 
         ROYAL_FLUSH, //A, K, Q, J, 10, all the same suit.
@@ -30,15 +32,22 @@ class PokerScore {
         HIGH_CARD //highest card in the player’s hand
 
     };
+public:
+    static bool royalFlush(CardHand hand);
+    static bool straightFlush(CardHand hand);
+    static bool fourOfAKind(CardHand hand);
+    static bool fullHouse(CardHand hand);
+    static bool flush(CardHand hand);
+    static bool straight(CardHand hand);
+    static bool threeOfAKind(CardHand hand);
+    static bool twoPair(CardHand hand);
+    static bool onePair(CardHand hand);
+    static bool highCard(CardHand hand);
 
-   //vector<Scores> scores;
-   //
-   //void operator+=(const Scores& score);
-   //
-   //friend bool operator==(const PokerScore& p, Scores score);
-   //int size();
-   //Score& operator[](unsigned int index);
-   //PokerScore();
+    friend std::ostream& operator<<(std::ostream& out, const PokerScore& s);
+    void addScore(Scores score);
+
+
 };
 
 

@@ -17,9 +17,11 @@ void Deck::fillDeck() {
     {
         for (int j = 0; j < 13; j++)
         {
+            // creates a deck of cards using the given enums
             deck[cardIndex++] = Card(SuitEnum(i), RankEnum(j));
         }
     }
+    cardIndex--;
 }
 
 void Deck::shuffle()
@@ -36,13 +38,14 @@ std::ostream& operator<<(std::ostream& out, const Deck& deck) // prints all the 
 {
     for (int i = 0; i < deck.DECK_SIZE; i++)
     {
-        out << i + 1 << ": " << deck.deck[i] << std::endl;
+        out << i + 1 << ": " << deck.deck[i];
     }
     return out;
 }
 
 Card Deck::dealCard() {
-    return deck[cardIndex++];
+    std::cout << deck[cardIndex--];
+    return deck[cardIndex--];
 }
 
 Card Deck::getCardAt(int index) {

@@ -14,7 +14,14 @@ private:
 
     SuitEnum suit;
     RankEnum rank;
+    friend bool operator>(const Card &firstCard, const Card &secondCard);
+    friend bool operator<(const Card &firstCard, const Card &secondCard);
+    friend bool operator==(const Card &firstCard, const Card &secondCard);
+    friend bool operator==( const int &n, const Card &firstCard);
 
+    friend bool operator==(const Card &firstCard, const int &n);
+    friend int operator+(const Card &firstCard, const int &n);
+    friend int operator+(const int &n,const Card &firstCard);
 public:
     std::string rankToString() const;
     std::string suitToString() const;
